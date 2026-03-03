@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CaesarGUI</class>
+ <widget class="QMainWindow" name="CaesarGUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>794</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CaesarGUI</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* Background Utama */
+QMainWindow, QWidget#centralwidget {
+    background-color: #0f172a;
+}
+
+/* Tulisan Instruksi */
+QLabel {
+    color: #38bdf8;
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Kotak Input dan Spinbox */
+QLineEdit, QSpinBox {
+    background-color: #1e293b;
+    color: #ffffff;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 8px;
+}
+
+/* Kotak Hasil (MENGHILANGKAN PUTIH) */
+QPlainTextEdit {
+    background-color: #020617; /* Lebih gelap dari background utama */
+    color: #4ade80; /* Hijau Matrix */
+    border: 2px solid #1e293b;
+    border-radius: 8px;
+    font-family: &quot;Consolas&quot;, monospace;
+    font-size: 13px;
+}
+
+/* Tombol-Tombol */
+QPushButton {
+    background-color: #0ea5e9;
+    color: white;
+    border-radius: 6px;
+    padding: 12px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #38bdf8;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>781</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">/* =========================================
+   1. BACKGROUND UTAMA (Mode Gelap)
+   ========================================= */
+QWidget#centralwidget, QStackedWidget {
+    background-color: #0b0f19; /* Biru sangat gelap ala terminal */
+}
+
+/* =========================================
+   2. SEMUA TEKS &amp; LABEL
+   ========================================= */
+QLabel {
+    color: #00ffcc; /* Hijau neon/Cyan */
+    font-family: &quot;Segoe UI&quot;, &quot;Courier New&quot;;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* =========================================
+   3. KOTAK INPUT (Pesan, Kunci, Hasil)
+   ========================================= */
+QLineEdit, QTextEdit, QSpinBox {
+    background-color: #131a2a;
+    color: #ffffff; /* Teks putih agar terbaca jelas */
+    border: 2px solid #1f293d;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: &quot;Consolas&quot;, &quot;Courier New&quot;;
+    font-size: 14px;
+}
+
+/* Efek saat kotak input diklik (Fokus) */
+QLineEdit:focus, QTextEdit:focus, QSpinBox:focus {
+    border: 2px solid #00ffcc; /* Menyala hijau/cyan saat diketik */
+}
+
+/* =========================================
+   4. TOMBOL UTAMA (Enkripsi, Dekripsi, Login)
+   ========================================= */
+QPushButton {
+    background-color: #007acc; /* Biru korporat/profesional */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+QPushButton:hover {
+    background-color: #0099ff; /* Terang saat di-hover */
+}
+
+QPushButton:pressed {
+    background-color: #005c99; /* Gelap saat diklik */
+}
+
+/* =========================================
+   5. TOMBOL KEMBALI &amp; LOGOUT (Warna Merah/Peringatan)
+   ========================================= */
+/* Kita targetkan langsung nama tombolnya agar warnanya beda sendiri */
+QPushButton#btnLogOut, QPushButton#btnBack1, QPushButton#btnBack2 {
+    background-color: #cc3333; 
+}
+
+QPushButton#btnLogOut:hover, QPushButton#btnBack1:hover, QPushButton#btnBack2:hover {
+    background-color: #ff4d4d;
+}
+
+QPushButton#btnLogOut:pressed, QPushButton#btnBack1:pressed, QPushButton#btnBack2:pressed {
+    background-color: #990000;
+}
+
+/* =========================================
+   6. TOMBOL SIMPAN (Warna Hijau)
+   ========================================= */
+QPushButton#btnSimpanVig {
+    background-color: #2eb82e;
+}
+
+QPushButton#btnSimpanVig:hover {
+    background-color: #33cc33;
+}</string>
+    </property>
+    <property name="currentIndex">
+     <number>3</number>
+    </property>
+    <widget class="QWidget" name="login">
+     <property name="styleSheet">
+      <string notr="true">background: qlineargradient(
+    x1:0, y1:0, x2:1, y2:1,
+    stop:0 #0f2027,
+    stop:1 #2c5364
+);</string>
+     </property>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>170</y>
+        <width>651</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LayoutDirection::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string>SISTEM KRIPTOGRAFI SIBER</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>200</y>
+        <width>651</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LayoutDirection::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string>Masukkan Kode Akses</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="linePass">
+      <property name="geometry">
+       <rect>
+        <x>22</x>
+        <y>230</y>
+        <width>741</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::EchoMode::Password</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnLogin">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>300</y>
+        <width>93</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Login</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>510</y>
+        <width>171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Buatan Said Dan Keifa</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="dashboard">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="labelpilihmodul">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>PILIH MODUL KRIPTOGRAFI</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnGoCaesar">
+        <property name="text">
+         <string>Sandi Caesar</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnGoVigenere">
+        <property name="text">
+         <string>Sandi Vigenere</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnLogOut">
+        <property name="text">
+         <string>Log Out</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="vigenere">
+     <widget class="QTextEdit" name="textEditPesanVig">
+      <property name="geometry">
+       <rect>
+        <x>11</x>
+        <y>51</y>
+        <width>751</width>
+        <height>41</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEditHasilVig">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>190</y>
+        <width>751</width>
+        <height>121</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnDekripsiVig">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>330</y>
+        <width>371</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Dekripsi</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnBack2">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>430</y>
+        <width>441</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Back To Dashboard</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnEnkripsiVig">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>330</y>
+        <width>371</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Enkripsi</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>341</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Masukkan Pesan</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>100</y>
+        <width>341</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Masukkan Kata Kunci</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>170</y>
+        <width>341</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Hasil</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEditKunciVig">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>751</width>
+        <height>41</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnSimpanVig">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>380</y>
+        <width>751</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Simpan File</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="caesar">
+     <widget class="QSpinBox" name="spinBoxKunci">
+      <property name="geometry">
+       <rect>
+        <x>11</x>
+        <y>84</y>
+        <width>751</width>
+        <height>40</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="textEditHasil">
+      <property name="geometry">
+       <rect>
+        <x>11</x>
+        <y>157</y>
+        <width>749</width>
+        <height>141</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEditPesan">
+      <property name="geometry">
+       <rect>
+        <x>11</x>
+        <y>37</y>
+        <width>751</width>
+        <height>40</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnEnkripsi">
+      <property name="geometry">
+       <rect>
+        <x>11</x>
+        <y>310</y>
+        <width>361</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Enkripsi</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelHasil2">
+      <property name="geometry">
+       <rect>
+        <x>11</x>
+        <y>131</y>
+        <width>164</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Hasil akan muncul di sini</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelInput">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>731</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Masukkan Pesan Rahasia:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnSimpan">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>370</y>
+        <width>751</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Simpan File</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnDekripsi">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>310</y>
+        <width>371</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Dekripsi</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnBruteForce">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>420</y>
+        <width>751</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Brute Force</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnBack1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>470</y>
+        <width>751</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Back To Dashboard</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>794</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
