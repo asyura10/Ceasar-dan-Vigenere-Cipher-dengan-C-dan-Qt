@@ -19,7 +19,8 @@ Aplikasi kriptografi klasik berbasis *Graphical User Interface* (GUI) yang dikem
 5. **File I/O Management:** Ekspor hasil *ciphertext* atau *plaintext* ke dalam format `.txt` lokal.
 
 ## 🚀 Cara Menjalankan (How to Run)
-1. *Clone repository* ini: `git clone https://github.com/UsernameKamu/Kriptografi-Klasik-Qt.git`
-2. Buka file `.pro` atau `CMakeLists.txt` menggunakan **Qt Creator**.
-3. Lakukan proses *Build* (Ctrl+B) dan *Run* (Ctrl+R).
-4. Gunakan kata sandi **poltekssn** pada halaman *login* untuk masuk ke *Dashboard*.
+1. Download the .zip file release
+2. Extract the folder
+3. Run the .exe file
+4. On the login page, use the password: **poltekssn**
+5. After login, you will enter the Dashboard
